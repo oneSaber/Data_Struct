@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "停车场", "停车场\停车场.vcxproj", "{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Debug|x64.ActiveCfg = Debug|x64
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Debug|x64.Build.0 = Debug|x64
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Debug|x86.ActiveCfg = Debug|Win32
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Debug|x86.Build.0 = Debug|Win32
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Release|x64.ActiveCfg = Release|x64
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Release|x64.Build.0 = Release|x64
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Release|x86.ActiveCfg = Release|Win32
+		{CAAC8357-95E9-437C-AA42-FF0B51FF9A9C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F94334A5-EBE1-4538-8C5A-91A16B61947E}
+	EndGlobalSection
+EndGlobal
