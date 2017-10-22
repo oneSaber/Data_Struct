@@ -36,5 +36,27 @@ Car OutQueue(Queue &car_queue)
 	car_queue.length--;
 	return outcar;
 }
+//批量输入
+void All_inQueue(Queue &q)
+{
+	Car c;
+	while (scanf_s("%d%d", &c.card_id, &c.time) == 2)
+	{
+		eatline();
+		InQueue(q, c);
+	}
+	eatline();
+}
+
+//输出队列
+void ShowQueue(Queue q)
+{
+	Car c;
+	for(int i = 0;i<q.length&&q.length>0;i++)
+	{
+		c = q.wiatCars[i];
+		printf_s("%d,%d\n",c.card_id, c.time);
+	}
+}
 
 #endif // !Queue_H

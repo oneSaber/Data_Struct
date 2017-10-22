@@ -3,9 +3,6 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#define IN 'A'
-#define OUT 'D'
-#define END 'E'
 
 void eatline()
 {
@@ -15,9 +12,8 @@ void eatline()
 }
 
 struct car {
-	char Info;
 	int card_id;
-	int stay_time;
+	int time;
 	struct car *next;
 };
 typedef car Car;
@@ -58,12 +54,11 @@ Position Pop(Stack s)
 	}
 }
 //入栈
-void Push(Stack s, int card_id, int stay_time, char Info)
+void Push(Stack s, int card_id, int stay_time)
 {
 	Position p = (Position)malloc(sizeof(Car));
 	p->card_id = card_id;
-	p->Info = Info;
-	p->stay_time = stay_time;
+	p->time = stay_time;
 	p->next = s->next;
 	s->next = p;
 }
@@ -77,14 +72,10 @@ void All_inStack(Stack S)
 {
 	int car_id;
 	int stay_time;
-	char Info = getchar();
-	eatline();
 	while (scanf_s("%d%d", &car_id, &stay_time) == 2)
 	{
 		eatline();
-		Push(S, car_id, stay_time, Info);
-		Info = getchar();
-		eatline();
+		Push(S, car_id, stay_time);
 	}
 	eatline();
 	printf_s("Stack OVER!\n");
@@ -92,11 +83,26 @@ void All_inStack(Stack S)
 //输出栈的内容
 void ShowStack(Stack S)
 {
-	Position p;
-	while (!IsEmpty(S))
+	Position p =S->next;
+	while (p!=NULL)
 	{
-		p = Pop(S);
-		printf_s("%c,%d,%d\n", p->Info, p->card_id, p->stay_time);
+		printf_s("%d,%d\n",p->card_id, p->time);
+		p = p->next;
+	}
+}
+int Stack_length(Stack s)
+{
+	if (IsEmpty(s))
+		return 0;
+	else {
+		int length = 1;
+		Position p = s->next;
+		while (!IsLast(p))
+		{
+			length++;
+			p = p->next;
+		}
+		return length;
 	}
 }
 #endif // !Stack_H
