@@ -146,18 +146,83 @@ int StrDelete(HString &S, int i, int len)
 		return 2;
 	}
 }
-//得到串中与t相同的子串的第一个位置
+//得到串中与t相同的子串的第一个位置，KMP实现
+void Next(HString T, int next[])
+{
+	int i = 1;
+	next[i] = 0;
+	int j = 0;
+	while (i < T.Length)
+	{
+		if (j == 0 || T.Elem[i] == T.Elem[j]) {
+			++i; ++j;
+			next[i] = j;
+		}
+		else j = next[j];
+	}
+}
+int Index_KMP(HString S, HString T, int pos)
+{
+	int i = pos, j = 1;
+	int next[81];
+	Next(T, next);
+	while (i <= S.Length && j <= T.Length)
+	{
+		if (j == 0 || S.Elem[i] == T.Elem[j])
+		{
+			++i;
+			++j;
+		}
+		else j = next[j];
+	}
+	if (j > T.Length) return i - T.Length;
+	else return 0;
+}
+
+//将S中所有得子串u替换为v
+HString Replace(HString &S, HString u, HString v)
+{
+	HString T,temp;
+	StrInit(T);
+	StrInit(temp);
+	int Start = 1;
+	int End = 1;
+	int pos = T.Length;
+	int index = Index_KMP(S,u,1);
+	while (index != 0)
+	{
+		End = index;
+		SubStr(S, temp, Start, End - Start);
+		Start = End;
+		StrInsert(T,pos,temp);
+		pos = T.Length;
+		StrInsert(T, pos, v);
+		pos = T.Length;
+		index = Index_KMP(S, u, index + u.Length);
+	}
+	if (End + u.Length < S.Length)
+	{
+		Start = End + u.Length;
+		SubStr(S, temp, Start, S.Length - Start);
+		StrInsert(S, pos, temp);
+	}
+	return T;
+}
+
 
 int main()
 {
 	printf_s("hello world!\n");
-	HString S,T;
+	HString S,T,u,v;
+	StrInit(u);
+	StrInit(v);
 	StrInit(S);
 	StrInit(T);
 	GetString(S);
-	//GetString(T);
-	StrDelete(S, 5, 6);
-	ShowString(S);
+	GetString(u);
+	GetString(v);
+	T = Replace(S, u, v);
+	ShowString(T);
 	system("pause");
 	return 0;
 }
