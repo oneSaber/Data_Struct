@@ -1,7 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
-#define MAXLEN 120
+#define MAXLEN 10000
 typedef struct
 {
 	char *Elem;

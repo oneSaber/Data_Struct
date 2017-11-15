@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "String.h"
+
+bool IsWord(char head,char tail)
+{
+	return ((head == 32 && tail == ' ') || (head == 32 && tail == '\n') || (head == ' '&&tail == '\n') ||
+		(head == ' '&&tail == ' ') || (head == '('&&tail == ')') || (head == '{'&&tail == '}') ||
+		(head == '['&& tail == ']') || (head == '"'&&tail == '"') || (head == '\''&&tail == '\''));
+}
+
 int main()
 {
 	int count[1000] = { 0 };
@@ -21,7 +29,7 @@ int main()
 		while (pos <= text.Length)
 		{//这一行没有被查找过
 			int index = Index_KMP(text, word, pos);//利用KMP算法找到word的位置
-			if (index != 0)
+			if (index != 0 && IsWord(text.Elem[index - -1],text.Elem[index + word.Length]))
 			{
 				word_num++;
 				pos = index + 1;//下一个查找起始点
