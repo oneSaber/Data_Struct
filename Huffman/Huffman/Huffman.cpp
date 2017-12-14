@@ -87,22 +87,30 @@ int decode(char string[], HuffmanNode Huffman[], int bits[], int n)
 	for (int i = 0; string[i] != '\0'; i++)
 	{
 		int pos = -1;
+		int flag = 0;
 		for (int j = 0; j < n; j++)
 		{
 			if (Huffman[j].value == string[i])
 			{
 				pos = j;
+				flag = 1;
 				break;
 			}
 		}
-		while (pos != TopOfTree)
-		{
-			int parents = Huffman[pos].parent;
-			if (Huffman[parents].lchild == pos)
-				bits[start] = 0;//左节点为0
-			else bits[start] = 1;//右节点为1
-			pos = parents;
-			start++;
+		if (flag == 1)
+		{//编码系统里存在该字母时编码
+			while (pos != TopOfTree)
+			{
+				int parents = Huffman[pos].parent;
+				if (Huffman[parents].lchild == pos)
+					bits[start] = 0;//左节点为0
+				else bits[start] = 1;//右节点为1
+				pos = parents;
+				start++;
+			}
+		}
+		else {
+			printf_s("%c 没有在编码系统中\n", string[i]);
 		}
 	}
 	return start-1;
@@ -188,6 +196,7 @@ int main()
 	//将编码结果逆置
 	turnString(encode_string);
 	//输出编码结果
+	printf_s("\n");
 	puts(encode_string);
 	system("pause");
 	return 0;

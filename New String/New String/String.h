@@ -209,4 +209,3 @@ HString Replace(HString &S, HString u, HString v)
 	}
 	return T;
 }
-

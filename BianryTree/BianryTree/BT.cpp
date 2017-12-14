@@ -109,7 +109,7 @@ int main()
 	T = (Tree)malloc(sizeof(NODE));
 	CreateTree(T);
 	showTree(T);
-	int search_key;
+	//int search_key;
 	system("pause");
 	return 0;
 }

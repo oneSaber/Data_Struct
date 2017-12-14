@@ -36,6 +36,21 @@ int BinarySearch(int key, int data[],int left,int right)
 		else return BinarySearch(key, data, left, mid - 1);
 	}
 }
+// 折半查找，非递归写法
+int Bsearch(int key, int left, int right, int A[])
+{
+	while (left <= right&&left>0&&right<=A[0])
+	{
+		int mid = (left + right) / 2;
+		if (A[mid] == key)
+			return mid;
+		else if (A[mid] < key)
+			left = mid + 1;
+		else if (A[mid] > key)
+			right = mid - 1;
+	}
+	return 0;
+}
 int main()
 {
 	FILE *fout;
@@ -46,9 +61,10 @@ int main()
 	int search_key;
 	printf_s("输入查找的数字：");
 	scanf_s("%d", &search_key);
-	int postion = BinarySearch(search_key, data, 1, data[0]);
-	if(postion)
-		printf_s("%d", postion);
+	//int postion = BinarySearch(search_key, data, 1, data[0]);
+	int position = Bsearch(search_key, 1, data[0], data);
+	if(position)
+		printf_s("%d", position);
 	else printf_s("can not find");
 	system("pause");
 	return 0;
