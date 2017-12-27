@@ -1,5 +1,6 @@
 import collections
 side = collections.namedtuple('side','v d')
+
 map  = {
     1:[side(2,2),side(4,1)],
     2:[side(4,3),side(5,10)],
@@ -11,7 +12,6 @@ map  = {
 }
 Infinity = 9999
 
-
 T = {}
 for key in map.keys():
     neww = {
@@ -21,7 +21,6 @@ for key in map.keys():
     }
     newV = {key: neww}
     T.update(newV)
-
 
 def Unweight():
     for i in range(len(map.keys())):
@@ -33,7 +32,6 @@ def Unweight():
                         T[w]['d'] = i +1
                         T[w]['p'] = v
 
-# Unweiht()
 def Unweighted(start):
      Q = []
      Q.append(start)
@@ -49,7 +47,6 @@ def Unweighted(start):
 start  = int(input('start with:'))
 T[start]['d'] = 0
 T[start]['p'] = 0
-
 def unknownsmallest():
     v = -1
     min = Infinity+1
@@ -69,9 +66,42 @@ def Dijkstra(start):
             if not T[w.v]['known']:
                 if T[V]['d'] + w.d<T[w.v]['d']:
                     T[w.v]['d'] = T[V]['d']+ w.d
-                    # T[w.v]['known'] = True
                     T[w.v]['p'] = V
+def WeightedNegataive(start):
+    Q = []
+    Q.append(start)
+    while len(Q)>0:
+        v = Q.pop()
+        for w in map[v]:
+            if T[v]['d']+w.d<T[w.v]['d']:
+                T[w.v]['d'] = T[v]['d']+w.d
+                T[w.v]['p'] = v
+                if w.v not in Q:
+                    Q.append(w.v)
+Visit = {}
+def Dfs(V):
+    Visit[V] = True
+    print(V)
+    for W in map[V]:
+        if Visit[W.v] == False:
+            Dfs(W.v)
+def DeepTrave(start):
+
+    for i in map.keys():
+        Visit.update({i:False})
+    V = start
+    Dfs(V)
 
 Dijkstra(start)
+end = int(input('end with:'))
 for key in T.keys():
     print("{} {} {} ".format(T[key]['known'], T[key]['d'], T[key]['p']))
+path = []
+p = end
+while p != start:
+    path.append(p)
+    p = T[p]['p']
+path.append(p)
+print(path[::-1])
+
+

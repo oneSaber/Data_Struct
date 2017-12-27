@@ -10,6 +10,18 @@ struct Vertex {
 };
 typedef struct Vertex * Node;
 
+struct qNode {
+	int data;
+	struct qNode *next;
+};
+struct queue {
+	int length;
+	struct qNode *top;
+	struct qNode *tail;
+};
+typedef qNode NODE;
+typedef NODE *Position;
+typedef struct queue *Queue;
 void InsertNode(Node *G, int to, int weight, bool Derction)
 {
 	Node p = (*G)->next;
@@ -104,10 +116,62 @@ void ShowGraph(Node G[])
 		Node p = G[i]->next;
 		while (p)
 		{
-			printf_s("(%d %d %d),", G[i]->num, p->num, p->weight);
+			printf_s("(%d ->%d: %d),", G[i]->num, p->num, p->weight);
 			p = p->next;
 		}
 		printf_s("null\n");
 	}
 }
+
+void InitQueue(Queue &Q)
+{
+	if (Q == NULL)
+		Q = (Queue)malloc(sizeof(NODE));
+	Q->top = NULL;
+	Q->tail = NULL;
+	Q->length = 0;
+}
+int Top(Queue Q)
+{
+	Position p = Q->top;
+	return p->data;
+}
+int Pop(Queue Q)
+{
+	if (Q->length == 0)
+		return false;
+	Position p = Q->top;
+	if (Q->length > 1) {
+		Q->top = p->next;
+		Q->length--;
+		return p->data;
+	}
+	else
+	{
+		Q->top = p->next;
+		Q->tail = NULL;
+		Q->length = 0;
+		return p->data;
+	}
+}
+void Push(Queue Q, int data)
+{
+	Position p = (Position)malloc(sizeof(NODE));
+	p->data = data;
+	p->next = NULL;
+	if (Q->length > 0)
+	{
+		Position q = Q->tail;
+		q->next = p;
+		p->next = NULL;
+		Q->length++;
+		Q->tail = p;
+	}
+	else {
+		Q->top = p;
+		Q->tail = p;
+		Q->length++;
+	}
+}
+
 #endif // !_MAP_H

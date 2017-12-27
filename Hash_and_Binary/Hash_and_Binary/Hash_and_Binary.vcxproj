@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EAE43BE3-F05F-4929-9AFD-782B1994A482}</ProjectGuid>
-    <RootNamespace>Map</RootNamespace>
+    <ProjectGuid>{DFBE6987-DACE-4EB9-85C9-91C57A43BDFC}</ProjectGuid>
+    <RootNamespace>HashandBinary</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,10 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DeepTrace.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MAP.h" />
+    <ClCompile Include="HashBinary.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

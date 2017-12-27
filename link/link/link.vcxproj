@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EAE43BE3-F05F-4929-9AFD-782B1994A482}</ProjectGuid>
-    <RootNamespace>Map</RootNamespace>
+    <ProjectGuid>{A623FA70-39AD-43FA-AB13-229D7AADFC3A}</ProjectGuid>
+    <RootNamespace>link</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,10 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DeepTrace.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MAP.h" />
+    <ClCompile Include="link.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
