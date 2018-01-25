@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "*.cpp": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}
